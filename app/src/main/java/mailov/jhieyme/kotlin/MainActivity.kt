@@ -25,6 +25,6 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun mensajeNombre() {
 
-  Text(text = "Aqui arranca nuestra aventura Jhieyme")
+  Text(text = "Aqui arranca nuestra aventuraaaaaa Jhieyme")
 
 }
