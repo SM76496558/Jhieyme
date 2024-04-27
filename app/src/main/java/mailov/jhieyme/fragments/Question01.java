@@ -25,86 +25,85 @@ import mailov.jhieyme.viewmodel.ScoreViewModel;
 
 public class Question01 extends Fragment {
 
-    private FragmentQuestion01Binding binding;
-    private MaterialButton btnCorrect;
-    private MaterialButton btnCorrectX1;
-    private MaterialButton btnCorrectX2;
-    private MaterialButton btnCorrectX3;
-
-    private ScoreViewModel scoreViewModel;
-
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-
-        binding = FragmentQuestion01Binding.inflate(inflater, container, false);
-
-        scoreViewModel = new ViewModelProvider(requireActivity()).get(ScoreViewModel.class);
-        return binding.getRoot();
-    }
+  private FragmentQuestion01Binding binding;
+  private MaterialButton btnCorrect;
+  private MaterialButton btnCorrectX1;
+  private MaterialButton btnCorrectX2;
+  private MaterialButton btnCorrectX3;
+  private ScoreViewModel scoreViewModel;
 
 
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+  @Override
+  public void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
 
-        btnCorrect = view.findViewById(R.id.btnQ1Correct);
-        btnCorrectX1 = view.findViewById(R.id.btnQ1InCorrect1);
-        btnCorrectX2 = view.findViewById(R.id.btnQ1InCorrect2);
-        btnCorrectX3 = view.findViewById(R.id.btnQ1InCorrect3);
+  }
 
+  @Override
+  public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        btnCorrect.setOnClickListener(v -> {
-            snackbarShowUp("Sumaste + 10 puntos :) !");
-            scoreViewModel.ScoreUp();
+    binding = FragmentQuestion01Binding.inflate(inflater, container, false);
 
-        });
-
-        btnCorrectX1.setOnClickListener(v -> {
-            snackbarShowUp("Reduciste - 10 puntos :( !");
-            scoreViewModel.ScoreDown();
-        });
-
-        btnCorrectX2.setOnClickListener(v -> {
-            snackbarShowUp("Reduciste - 10 puntos :( !");
-            scoreViewModel.ScoreDown();
-        });
-        btnCorrectX3.setOnClickListener(v -> {
-            snackbarShowUp("Reduciste - 10 puntos :( !");
-            scoreViewModel.ScoreDown();
-        });
+    scoreViewModel = new ViewModelProvider(requireActivity()).get(ScoreViewModel.class);
+    return binding.getRoot();
+  }
 
 
-    }
+  @Override
+  public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+    super.onViewCreated(view, savedInstanceState);
 
-   
+    btnCorrect = view.findViewById(R.id.btnQ1Correct);
+    btnCorrectX1 = view.findViewById(R.id.btnQ1InCorrect1);
+    btnCorrectX2 = view.findViewById(R.id.btnQ1InCorrect2);
+    btnCorrectX3 = view.findViewById(R.id.btnQ1InCorrect3);
 
 
-    private void snackbarShowUp(String string) {
+    btnCorrect.setOnClickListener(v -> {
+      snackbarShowUp("Sumaste + 10 puntos :) !");
+      scoreViewModel.ScoreUp();
 
-        Snackbar snackbar = Snackbar.make(getActivity().findViewById(R.id.constraint), "", Snackbar.LENGTH_LONG);
-        View custom = getLayoutInflater().inflate(R.layout.snackbar_message_success, null);
+    });
 
-        TextView txtTitle = custom.findViewById(R.id.txt_TitleMessage);
-        txtTitle.setText(string);
+    btnCorrectX1.setOnClickListener(v -> {
+      snackbarShowUp("Reduciste - 10 puntos :( !");
+      scoreViewModel.ScoreDown();
+    });
 
-        snackbar.getView().setBackgroundColor(Color.TRANSPARENT);
-        @SuppressLint("RestrictedApi") Snackbar.SnackbarLayout snackbarLayout = (Snackbar.SnackbarLayout) snackbar.getView();
-        snackbarLayout.setPadding(0, 0, 0, 0);
+    btnCorrectX2.setOnClickListener(v -> {
+      snackbarShowUp("Reduciste - 10 puntos :( !");
+      scoreViewModel.ScoreDown();
+    });
+    btnCorrectX3.setOnClickListener(v -> {
+      snackbarShowUp("Reduciste - 10 puntos :( !");
+      scoreViewModel.ScoreDown();
+    });
 
-        (custom.findViewById(R.id.btnImage)).setOnClickListener(v -> {
-            snackbar.dismiss();
-        });
-        snackbarLayout.addView(custom, 0);
-        snackbar.show();
-    }
+
+  }
+
+
+  private void snackbarShowUp(String string) {
+
+    Snackbar snackbar = Snackbar.make(getActivity().findViewById(R.id.constraint), "", Snackbar.LENGTH_LONG);
+    View custom = getLayoutInflater().inflate(R.layout.snackbar_message_success, null);
+
+    TextView txtTitle = custom.findViewById(R.id.txt_TitleMessage);
+    txtTitle.setText(string);
+    snackbar.getView().setBackgroundColor(Color.TRANSPARENT);
+
+
+    @SuppressLint("RestrictedApi")
+    Snackbar.SnackbarLayout snackbarLayout = (Snackbar.SnackbarLayout) snackbar.getView();
+    snackbarLayout.setPadding(0, 0, 0, 0);
+
+    custom.findViewById(R.id.btnImage).setOnClickListener(v -> {
+      snackbar.dismiss();
+    });
+
+    snackbarLayout.addView(custom, 0);
+    snackbar.show();
+  }
 
 
 }
